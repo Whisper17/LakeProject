@@ -1,4 +1,5 @@
 #include "SceneGame.hpp"
+#include <iostream>
 
 SceneGame::SceneGame(WorkingDirectory& workingDir,
     ResourceAllocator<sf::Texture>& textureAllocator)

@@ -3,7 +3,7 @@
 SceneSplashScreen::SceneSplashScreen(WorkingDirectory& workingDir, 
     SceneStateMachine& sceneStateMachine, Window& window, ResourceAllocator<sf::Texture>& textureAllocator) 
         : sceneStateMachine(sceneStateMachine), workingDir(workingDir), window(window), 
-        switchToState(0), currentSeconds(0.f), showForSeconds(1.f), textureAllocator(textureAllocator)
+        switchToState(0), currentSeconds(0.f), showForSeconds(4.f), textureAllocator(textureAllocator)
 {
     
 }

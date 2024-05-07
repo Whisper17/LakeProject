@@ -41,10 +41,7 @@ void Object::LateUpdate(float deltaTime)
 
 void Object::Draw(Window& window)
 {
-    for(int i = components.size() - 1; i >= 0; i--)
-    {
-        components[i]->Draw(window);
-    }
+    drawable->Draw(window);
 }
 
 bool Object::IsQueuedForRemoval()
@@ -57,4 +54,8 @@ void Object::QueuedForRemoval()
     queuedForRemoval = true;
 }
 
+std::shared_ptr<C_Drawable> Object::GetDrawable()
+{
+    return drawable;
+}
 

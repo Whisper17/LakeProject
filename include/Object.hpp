@@ -1,11 +1,12 @@
 #ifndef Object_hpp
 #define Object_hpp
 
-#include "Window.hpp"
 #include <vector>
+
+#include "Window.hpp"
 #include "Component.hpp"
 #include "C_Transform.hpp"
-
+#include "C_Drawable.hpp"
 
 class Object
 {
@@ -25,7 +26,7 @@ public:
     void Draw(Window& window);
 
     template <typename T> std::shared_ptr<T> AddComponent()
-        {
+    {
             //This ensures that we only try to add a class that 
             //derives from Component. This is tested at compile time.
             static_assert(std::is_base_of<Component, T>::value,"T must derive from Component");
@@ -45,8 +46,13 @@ public:
             std::shared_ptr<T> newComponent = std::make_shared<T>(this);
             components.push_back(newComponent);
 
+            if(std::dynamic_pointer_cast<C_Drawable>(newComponent))
+            {
+                drawable = std::dynamic_pointer_cast<C_Drawable>(newComponent);
+            }
+
             return newComponent;
-        };
+    };
 
     template <typename T> std::shared_ptr<T> GetComponent()
     {
@@ -63,12 +69,15 @@ public:
         return nullptr;
     };
 
+    std::shared_ptr<C_Drawable> GetDrawable();
+
     bool IsQueuedForRemoval();
     void QueuedForRemoval();
 
     std::shared_ptr<C_Transform> transform;
 private:
     std::vector<std::shared_ptr<Component>> components;
+    std::shared_ptr<C_Drawable> drawable;
     bool queuedForRemoval;
 };
 

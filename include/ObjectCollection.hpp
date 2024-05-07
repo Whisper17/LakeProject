@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Object.hpp"
+#include "S_Drawable.hpp"
 
 class ObjectCollection
 {
@@ -22,6 +23,7 @@ public:
 private:
     std::vector<std::shared_ptr<Object>> objects;
     std::vector<std::shared_ptr<Object>> newObjects;
+    S_Drawable drawables;
 };
 
 #endif /* ObjectCollection_hpp */

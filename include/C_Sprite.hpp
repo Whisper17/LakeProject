@@ -4,9 +4,10 @@
 #include "Component.hpp"
 #include "C_Transform.hpp"
 #include "ResourceAllocator.hpp"
+#include "C_Drawable.hpp"
 
 
-class C_Sprite : public Component
+class C_Sprite : public Component, public C_Drawable
 {
 public:
     C_Sprite(Object* owner);
